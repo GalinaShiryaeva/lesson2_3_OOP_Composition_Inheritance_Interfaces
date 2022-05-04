@@ -1,48 +1,42 @@
-interface Attachment {
-    val type: String
-}
+sealed class Attachment(val type: String)
 
-class VideoAttachment(
-    val id: Int,
-    val album_id: Int,
-    val owner_id: Int,
-    val user_id: Int
-) : Attachment {
-    override val type: String = "video"
-}
+data class VideoAttachment(val video: Video) : Attachment("video")
+data class AudioAttachment(val audio: Audio) : Attachment("audio")
+data class PhotoAttachment(val photo: Photo) : Attachment("photo")
+data class FileAttachment(val file: File) : Attachment("file")
+data class MapAttachment(val map: Map) : Attachment("map")
 
-class PhotoAttachment(
+class Video(
     val id: Int,
-    val album_id: Int,
-    val owner_id: Int,
-    val user_id: Int
-) : Attachment {
-    override val type: String = "photo"
-}
+    val album_id: Int = 12,
+    val owner_id: Int = 12,
+    val user_id: Int = 12
+)
 
-class MapAttachment(
-    val id: Int,
-    val album_id: Int,
-    val owner_id: Int,
-    val user_id: Int
-) : Attachment {
-    override val type: String = "map"
-}
+class Audio(
+    val id: Int = 14,
+    val album_id: Int = 14,
+    val owner_id: Int = 14,
+    val user_id: Int = 14
+)
 
-class FileAttachment(
-    val id: Int,
-    val album_id: Int,
-    val owner_id: Int,
-    val user_id: Int
-) : Attachment {
-    override val type: String = "file"
-}
+class File(
+    val id: Int = 15,
+    val album_id: Int = 15,
+    val owner_id: Int = 15,
+    val user_id: Int = 15
+)
 
-class AudioAttachment(
-    val id: Int,
-    val album_id: Int,
-    val owner_id: Int,
-    val user_id: Int
-) : Attachment {
-    override val type: String = "audio"
-}
+class Photo(
+    val id: Int = 17,
+    val album_id: Int = 17,
+    val owner_id: Int = 17,
+    val user_id: Int = 17
+)
+
+class Map(
+    val id: Int = 18,
+    val album_id: Int = 18,
+    val owner_id: Int = 18,
+    val user_id: Int = 18
+)

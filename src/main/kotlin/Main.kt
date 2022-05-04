@@ -1,26 +1,24 @@
 fun main() {
     var id: Long = 0
-    var attachmentId: Int = 0
 
     // заполняем массив
     for (i in 0..5) {
         WallService.add(Post(++id))
     }
     WallService.update(Post(5))
-    //WallService.printPosts()
 
-    var arrayOfAttachments1 = emptyArray<Attachment>()
-    var arrayOfAttachments2 = emptyArray<Attachment>()
+    var attachments1 = emptyArray<Attachment>()
+    var attachments2 = emptyArray<Attachment>()
 
-    arrayOfAttachments1 += VideoAttachment( ++attachmentId, 5, 6, 7)
-    arrayOfAttachments1 += PhotoAttachment( ++attachmentId, 4, 2, 9)
-    arrayOfAttachments1 += MapAttachment( ++attachmentId, 3, 8, 1)
+    attachments1 += VideoAttachment(Video(3452))
+    attachments1 += PhotoAttachment(Photo())
+    attachments1 += MapAttachment(Map())
 
-    arrayOfAttachments2 += FileAttachment( ++attachmentId, 3, 4, 2)
-    arrayOfAttachments2 += AudioAttachment( ++attachmentId, 1, 2, 8)
+    attachments2 += FileAttachment(File(23488))
+    attachments2 += AudioAttachment(Audio())
 
-    val somePost1 = WallService.add(Post(++id, arrayOfAttachments1))
-    val somePost2 = WallService.add(Post(++id, arrayOfAttachments2))
+    val somePost1 = WallService.add(Post(++id, attachments1))
+    val somePost2 = WallService.add(Post(++id, attachments2))
 
     WallService.printPosts()
 }
